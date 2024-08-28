@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/src/service_locator.dart';
+import 'service_locator.dart';
 
 class BaseView<T extends StateNotifier<S>, S> extends StatefulWidget {
   const BaseView({
