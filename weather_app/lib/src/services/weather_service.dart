@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'models/weather.dart';
 
@@ -12,9 +13,9 @@ class WeatherService {
   Future<Weather> getWeather(String city) async {
     try {
       final Response<String> response = await _dio.get(
-          'https://api.weatherapi.com/v1/current.json',
+          'https://api.openweathermap.org/data/2.5/weather',
           queryParameters: <String, dynamic>{
-            'key': 'YOUR_API_KEY',
+            'appid': dotenv.env['API_KEY'],
             'q': city,
           });
 

@@ -5,6 +5,7 @@ class WeatherHomeInitialWidget extends StatelessWidget {
   const WeatherHomeInitialWidget({super.key});
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather Home'),
@@ -14,6 +15,7 @@ class WeatherHomeInitialWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             TextFormField(
+              controller: controller,
               decoration: const InputDecoration(
                 labelText: 'Enter a city',
               ),
@@ -21,9 +23,9 @@ class WeatherHomeInitialWidget extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/weather_detail');
+                context.go('/weather_detail/${controller.text}');
               },
-              child: const Text('Get Weather'),
+              child: const Text('Get Current Weather'),
             ),
           ],
         ),

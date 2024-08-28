@@ -17,10 +17,13 @@ GoRouter get router => GoRouter(
                   const WeatherHomeView(),
               routes: <RouteBase>[
                 GoRoute(
-                  name: 'weather_detail',
-                  path: 'weather_detail',
-                  builder: (BuildContext context, GoRouterState state) =>
-                      const WeatherDetailsView(),
-                ),
+                    name: 'weather_detail',
+                    path: 'weather_detail/:city',
+                    builder: (BuildContext context, GoRouterState state) {
+                      final String? city = state.pathParameters['city'];
+                      return WeatherDetailsView(
+                        city: city,
+                      );
+                    }),
               ])
         ]);
