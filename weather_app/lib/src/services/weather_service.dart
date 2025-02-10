@@ -13,9 +13,9 @@ class WeatherService {
   Future<Weather> getWeather(String city) async {
     try {
       final Response<String> response = await _dio.get(
-          'https://api.openweathermap.org/data/2.5/weather',
+          'http://api.weatherapi.com/v1/current.json',
           queryParameters: <String, dynamic>{
-            'appid': dotenv.env['API_KEY'],
+            'key': dotenv.env['API_KEY'],
             'q': city,
           });
 
@@ -27,7 +27,7 @@ class WeatherService {
         throw Exception('Failed to fetch weather data');
       }
     } catch (e) {
-      throw Exception('Failed to connect to the weather API');
+      throw Exception('Failed to connect to the weather API! $e');
     }
   }
 }
