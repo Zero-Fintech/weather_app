@@ -16,21 +16,12 @@ class WeatherHomeView extends StatelessWidget {
           WeatherHomeViewModel viewModel,
           WeatherHomeViewState viewState,
         ) {
-          if (viewState is InitialState) {
-            return const WeatherHomeInitialWidget();
-          }
-          if (viewState is ErrorState) {
-            return const WeatherHomeErrorWidget();
-          }
-          if (viewState is LoadingState) {
-            return const WeatherHomeLoadingWidget();
-          }
-          if (viewState is LoadedState) {
-            return const WeatherHomeLoadedWidget();
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return switch (viewState) {
+            InitialState() => const WeatherHomeInitialWidget(),
+            LoadingState() => const WeatherHomeLoadingWidget(),
+            ErrorState() => const WeatherHomeErrorWidget(),
+            LoadedState() => const WeatherHomeLoadedWidget(),
+          };
         });
   }
 }
