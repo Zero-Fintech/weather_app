@@ -1,6 +1,6 @@
 import '../../services/models/weather.dart';
 
-abstract class WeatherDetailsViewState {}
+sealed class WeatherDetailsViewState {}
 
 class LoadingState extends WeatherDetailsViewState {}
 

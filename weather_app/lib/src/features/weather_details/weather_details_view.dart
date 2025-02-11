@@ -20,25 +20,13 @@ class WeatherDetailsView extends StatelessWidget {
       WeatherDetailsViewModel viewModel,
       WeatherDetailsViewState viewState,
     ) {
-      if (viewState is InitialState) {
-        return const WeatherDetailsInitialWidget();
-      }
-      if (viewState is ErrorState) {
-        return WeatherDetailsErrorWidget(
-          errorMessage: viewState.errorMessage,
-        );
-      }
-      if (viewState is LoadingState) {
-        return const WeatherDetailsLoadingWidget();
-      }
-      if (viewState is LoadedState) {
-        return WeatherDetailsLoadedWidget(
-          weather: viewState.weather,
-        );
-      }
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return switch (viewState) {
+        InitialState() => const WeatherDetailsInitialWidget(),
+        LoadingState() => const WeatherDetailsLoadingWidget(),
+        ErrorState() =>
+          WeatherDetailsErrorWidget(errorMessage: viewState.errorMessage),
+        LoadedState() => WeatherDetailsLoadedWidget(weather: viewState.weather),
+      };
     });
   }
 }

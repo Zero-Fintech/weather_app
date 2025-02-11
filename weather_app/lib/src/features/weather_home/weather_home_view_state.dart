@@ -1,4 +1,4 @@
-abstract class WeatherHomeViewState {}
+sealed class WeatherHomeViewState {}
 
 class LoadingState extends WeatherHomeViewState {}
 

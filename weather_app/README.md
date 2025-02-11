@@ -7,4 +7,6 @@ Use the following command to install the dependencies
 
 Use the following command to run the app
 ```flutter run```
-```
+
+## Docs
+https://www.weatherapi.com/docs/
